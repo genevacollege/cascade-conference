@@ -1,0 +1,35 @@
+<link href="route-to/styles.css" rel="stylesheet" />
+<div class="wide-container">
+  <div class="program-search-area">
+    <form class="skeleton-form">
+      <div class="flex-container">
+        <div class="flex-option-1">
+          <input
+            class="u-full-width"
+            id="filter-keyword"
+            placeholder="Filter By Keyword"
+            type="text"
+          />
+        </div>
+        <div class="flex-option-2">
+          <select class="u-full-width" id="filter-interest">
+            <option value="">Academic Interest</option>
+            <option value="Option 1">Option 1</option>
+            <option value="Option 2">Option 2</option>
+            <option value="Option 3">Option 3</option>
+          </select>
+        </div>
+        <div class="flex-option-3">
+          <select class="u-full-width" id="filter-program">
+            <option value="">Program Type</option>
+            <option value="Option 1">Option 1</option>
+            <option value="Option 2">Option 2</option>
+            <option value="Option 3">Option 3</option>
+          </select>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="flex-container" id="results"></div>
+  <div class="flex-container" id="noresults"></div>
+</div>
