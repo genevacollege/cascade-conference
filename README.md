@@ -1,3 +1,7 @@
+<a href="https://geneva.edu/" target="_blank">
+  <img src="https://avatars.githubusercontent.com/u/59443670?v=4" alt="Geneva College logo" style="position: absolute; top: 0; right: 0; width: 25%;" />
+</a>
+
 # Geneva College's Cascade CMS User Conference Presentation
 
 _Presented by [Michael Duncan](https://www.linkedin.com/in/michaelduncan7) and [Caleb Hyatt](https://calebhyatt.com/)._
@@ -25,7 +29,7 @@ Use the **_[system-asset]_** tag within the JavaScript file and the **_?raw_** p
 
 Here's what our code will look like to fetch the JSON data:
 
-<!-- ![]() -->
+![Fetch URL code snippet](https://raw.githubusercontent.com/genevacollege/cascade-conference/main/code-snippets/Fetch%20URL.png)
 
 ## The Main Functions
 
@@ -37,7 +41,7 @@ We have the main portion of our code divided into three functions: urlToSearch, 
 
 **_search()_** is where the search and filtering take place. The fetch retrieves the JSON output. Results are filtered based on user input.
 
-<!-- ![]() -->
+![Main Functions code snippet](https://raw.githubusercontent.com/genevacollege/cascade-conference/main/code-snippets/Main%20Functions.png)
 
 ## Deep Linking
 
@@ -47,4 +51,4 @@ Example URL: [https://www.geneva.edu/academics/programs/?interest=business](http
 
 **_getParam()_** checks if a parameter exists, and if not then nothing is executed.
 
-<!-- ![]() -->
+![URL to Search Function code snippet](https://raw.githubusercontent.com/genevacollege/cascade-conference/main/code-snippets/URL%20to%20Search%20Function.png)
