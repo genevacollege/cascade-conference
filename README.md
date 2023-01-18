@@ -20,6 +20,13 @@ genevacollege/cascade-conference
 ├── blocks
 |   ├── programs-search-filter-html
 |   └── programs-search-filter-scripts
+├── code-snippets
+|   ├── Fetch URL.png
+|   ├── Main Functions.png
+|   └── URL to Search Function.png
+├── formats
+|   ├── Academic Programs JSON.vtl
+|   └── Program Facts.vtl
 └── script.js
 ```
 
