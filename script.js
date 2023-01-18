@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  // fetch("https://www.geneva.edu/academics/programs/json/programs.json")
+  // fetch("https://www.geneva.edu/academics/programs/json/programs.json?raw")
   fetch("[system-asset]/academics/programs/json/programs?raw[/system-asset]")
     .then((results) => results.json())
     .then((initialData) => {

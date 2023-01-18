@@ -1,0 +1,92 @@
+<!--#protect-top##
+#set ($pages = $_XPathTool.selectNodes($contentRoot,"//system-page"))
+#set($programImage = $_XPathTool.selectNodes($systemData, "programThumbnail"))
+#set($programPath  = $programImage.getChild("path").value)
+#set($programLink  = $pages.getChild("link").value)
+##$_SortTool.addSortCriterion("name", "", "text", "ascending", "upper-first")
+##$_SortTool.sort($interestCats)
+[
+#if($pages)
+#foreach($item in $pages)
+#printJSON($item)
+#end
+#end
+]
+#macro(printJSON $item)
+#set($itemPhoto = $item.getChild("system-data-structure").getChild("programThumbnail").getChild("path").value)
+#set($itemLink = $item.getChild("path").value)
+#set($degreeTypes = $item.getChild("system-data-structure").getChild("programProperties").getChild("degreeTypes"))
+#set($programTypes = $_XPathTool.selectNodes($item, "system-data-structure/programProperties/programTypes/value"))
+#set($interestTypes = $_XPathTool.selectNodes($item, "system-data-structure/programProperties/academicInterests/value"))
+#set($progKeywords = $_XPathTool.selectSingleNode($item, "system-data-structure/programProperties/programKeywords"))
+#set ($strippedAbbr = "#printAbbr($degreeTypes)")
+#set ($strippedKeywords = "#tokenize($progKeywords.value)")
+$degreeTypes
+
+  {
+    "title": "${item.getChild("title").value}",
+    "image": "$_EscapeTool.xml($itemPhoto)",
+    "link": "$_EscapeTool.xml($itemLink)",
+    "degree_type": [#printList($programTypes)],
+    "degree_code": [$strippedAbbr.replaceAll("\s{2,}", "")],
+    "interest_types": [#printList($interestTypes)],
+    "keywords": [$strippedKeywords.replaceAll("\s{2,}", "")]
+  }#if( $foreach.hasNext ), #end
+#end
+#macro(printList $items)#*
+    *##if($items.size() >= 1)#*
+        *##foreach($item in $items)#*
+            *##if($foreach.hasNext)#*
+            *#"$item.value",#*
+            *##else#*
+            *#"$item.value"#*
+            *##end#*
+        *##end#*
+    *##end#*
+*##end
+
+#macro(printAbbr $items)##
+#set($items = $items.getChildren())
+#foreach($item in $items)
+    #if($foreach.hasNext)
+      #if($item.value == "Bachelor of Arts")"BA",#end
+      #if($item.value == "Bachelor of Science in Business Administration")BSBA,#end
+      #if($item.value == "Bachelor of Education")"BE",#end
+      #if($item.value == "Bachelor of Science")"BS",#end
+      #if($item.value == "Undergraduate Major")"Major",#end
+      #if($item.value == "Undergraduate Minor")"Minor",#end
+      #if($item.value == "Undergraduate Concentration")"CN",#end
+      #if($item.value == "Graduate Program")"Grad",#end
+      #if($item.value == "Online Degree Completion")"BA",#end
+      #if($item.value == "Early College")"EC",#end
+      #if($item.value == "Certificate")"CERT",#end
+    #else
+      #if($item.value == "Bachelor of Arts")"BA"#end
+      #if($item.value == "Bachelor of Science in Business Administration")"BSBA"#end
+      #if($item.value == "Bachelor of Education")"BE"#end
+      #if($item.value == "Bachelor of Science")"BS"#end
+      #if($item.value == "Undergraduate Major")"Major"#end
+      #if($item.value == "Undergraduate Minor")"Minor"#end
+      #if($item.value == "Undergraduate Concentration")"CN"#end
+      #if($item.value == "Graduate Program")"Grad"#end
+      #if($item.value == "Online Degree Completion")"BA"#end
+      #if($item.value == "Early College")"EC"#end
+      #if($item.value == "Certificate")"CERT"#end
+    #end
+#end
+#end
+
+#macro(tokenize $tokens)
+#foreach($token in $tokens.split("[,]"))
+#if($foreach.hasNext)
+"$token.trim()",
+#else
+"$token.trim()"
+#end
+#end
+#end
+
+#macro(stripString $string)##
+    $string.replaceAll("\s{2,}", "")##
+#end##
+#protect-top-->
