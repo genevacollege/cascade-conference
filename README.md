@@ -26,7 +26,6 @@ genevacollege/cascade-conference
 |   └── URL to Search Function.png
 ├── formats
 |   ├── Academic Programs JSON.vtl
-|   └── Program Facts.vtl
 └── script.js
 ```
 
